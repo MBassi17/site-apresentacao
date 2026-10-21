@@ -99,7 +99,7 @@
               </svg>
             </a>
             <a
-              href="https://instagram.com/"
+              href="https://www.instagram.com/mg_bassi/"
               target="_blank"
               rel="noopener"
               aria-label="Instagram de Miguel"
@@ -157,7 +157,7 @@
             trabalhando na Revise Seu Plano, uma empresa que atua no setor de
             seguro saúde, estou estudando análise e desenvolvimento de sistemas
             na FATEC Carapicuíba, gosto de jogar basquete, videogame. Sou
-            escoteiro há 12 anos, conquistei as insígnias máximas em todos os
+            escoteiro a 12 anos, conquistei as insígnias máximas em todos os
             ramos que passei, amo acampar e viajar.
           </p>
 
@@ -299,10 +299,44 @@
 
         <section id="contato-form" class="card">
           <h2>Entre em contato</h2>
-          <form class="formulario">
+
+          <div
+            data-fs-success
+            class="formulario-aviso formulario-aviso--sucesso"
+          ></div>
+          <div
+            data-fs-error
+            class="formulario-aviso formulario-aviso--erro"
+          ></div>
+
+          <form
+            id="formulario-contato"
+            class="formulario"
+            action="https://formspree.io/f/mzednker"
+            method="POST"
+          >
+            <input
+              type="text"
+              name="_gotcha"
+              style="display: none"
+              tabindex="-1"
+              autocomplete="off"
+            />
+            <input
+              type="hidden"
+              name="_subject"
+              value="Nova mensagem pelo portfólio"
+            />
+
             <div class="campo">
               <label for="nomeContato">Nome:</label>
-              <input type="text" id="nomeContato" required />
+              <input
+                type="text"
+                id="nomeContato"
+                name="name"
+                data-fs-field
+                required
+              />
             </div>
 
             <div class="campo">
@@ -310,6 +344,8 @@
               <input
                 type="email"
                 id="emailContato"
+                name="email"
+                data-fs-field
                 required
                 placeholder="seu.email@exemplo.com"
               />
@@ -320,6 +356,8 @@
               <input
                 type="tel"
                 id="telefone"
+                name="telefone"
+                data-fs-field
                 required
                 placeholder="(11) 99999-9999"
               />
@@ -327,12 +365,17 @@
 
             <div class="campo">
               <label for="data">Prefere contato em que data?</label>
-              <input type="date" id="data" />
+              <input
+                type="date"
+                id="data"
+                name="data_preferida"
+                data-fs-field
+              />
             </div>
 
             <div class="campo">
               <label for="assuntoSelect">Assunto:</label>
-              <select id="assuntoSelect">
+              <select id="assuntoSelect" name="assunto" data-fs-field>
                 <option>Dúvida sobre curso</option>
                 <option>Sugestão</option>
                 <option>Orçamento</option>
@@ -343,11 +386,16 @@
               <label for="mensagemContato">Mensagem:</label>
               <textarea
                 id="mensagemContato"
+                name="message"
+                data-fs-field
+                required
                 placeholder="Digite sua mensagem aqui..."
               ></textarea>
             </div>
 
-            <button type="submit" class="botao">Enviar mensagem</button>
+            <button type="submit" class="botao" data-fs-submit-btn>
+              Enviar mensagem
+            </button>
           </form>
         </section>
       </main>
@@ -376,5 +424,6 @@
 
     <script src="js/menu.js"></script>
     <script src="js/tema.js"></script>
+    <script src="js/contato.js"></script>
   </body>
 </html>
