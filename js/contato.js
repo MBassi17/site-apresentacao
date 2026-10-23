@@ -16,6 +16,11 @@ if (formularioContato) {
     });
   }
 
+  // O aviso fica acima do formulário; no celular, rola até ele para a pessoa ver o resultado.
+  function mostrarAviso(aviso) {
+    aviso.scrollIntoView({ behavior: "smooth", block: "center" });
+  }
+
   formularioContato.addEventListener("submit", function (evento) {
     evento.preventDefault();
     limparAvisos();
@@ -37,6 +42,7 @@ if (formularioContato) {
           avisoSucesso.textContent =
             "Mensagem enviada com sucesso! Obrigado pelo contato, retornarei em breve.";
           formularioContato.reset();
+          mostrarAviso(avisoSucesso);
           return;
         }
 
@@ -53,11 +59,13 @@ if (formularioContato) {
           }
           avisoErro.textContent =
             "Não foi possível enviar sua mensagem. Verifique os campos destacados e tente novamente.";
+          mostrarAviso(avisoErro);
         });
       })
       .catch(function () {
         avisoErro.textContent =
           "Não foi possível enviar sua mensagem. Verifique sua conexão e tente novamente.";
+        mostrarAviso(avisoErro);
       })
       .finally(function () {
         if (botaoEnviar) {
